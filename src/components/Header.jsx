@@ -1,14 +1,22 @@
-export default function Header(){
-    return(
-        <header className="header">
-            <nav className="nav-bar">
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Tasks</a></li>
-                    <li><a href="">Explore</a></li>
-                    <li><a href="">About</a></li>
-                </ul>
-            </nav>
-        </header>
-    );
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./Header.css"; // optional if you want separate styles
+
+export default function Header() {
+  return (
+    <nav className="navbar">
+      <NavLink to="/" className="nav-link">
+        Home
+      </NavLink>
+      <NavLink to="/tasks" className="nav-link">
+        Tasks
+      </NavLink>
+      <NavLink to="/explore" className="nav-link">
+        Explore
+      </NavLink>
+      <NavLink to="/about" className="nav-link">
+        About
+      </NavLink>
+    </nav>
+  );
 }
