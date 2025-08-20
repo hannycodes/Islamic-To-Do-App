@@ -1,23 +1,40 @@
-.navbar {
-  background-color: #f2e8d5;
-  padding: 10px;
-  display: flex;
-  gap: 15px;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: #444;
-  font-weight: bold;
-}
-
-.nav-link.active {
-  color: #b8860b;
-  border-bottom: 2px solid #b8860b;
-}
-
-h1 {
+.home-title {
   text-align: center;
   margin-top: 50px;
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
+  color: #b8860b;
+}
+
+.tasks-page {
+  padding: 20px;
+}
+
+.new-task-input {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.new-task-input input[type="text"],
+.new-task-input input[type="date"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.new-task-input button {
+  padding: 10px 20px;
+  background-color: #f7c59f; 
+  color: #2c3e50;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.new-task-input button:hover {
+  background-color: #d4a373; 
 }
