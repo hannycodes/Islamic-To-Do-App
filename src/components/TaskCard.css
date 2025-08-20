@@ -21,9 +21,23 @@
 }
 
 .task-card p {
+  margin: 2px 0;
+  font-size: 0.95rem;
   color: #555;
-  font-size: 0.9rem;
-  margin: 0;
+  display: flex;
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+}
+
+.task-card p.description {
+  flex: 1 1 70%; 
+}
+
+.task-card p.priority {
+  flex: 1 1 25%; 
+  text-align: right;
+  font-weight: bold;
+  color: #b8860b; 
 }
 
 .complete-btn {

@@ -2,31 +2,32 @@ import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import TaskCard from "./components/TaskCard";
+import TaskForm from "./components/TaskForm";
 import "./App.css";
 
 export default function App() {
   const [tasks, setTasks] = useState([
-    { id: 1, title: "Read Surah Al-Kahf", dueDate: "2025-08-15", completed: false },
-    { id: 2, title: "Morning and Evening Adhkar", dueDate: "2025-08-10", completed: false },
-    { id: 3, title: "Pray Tahajjud", dueDate: "2025-08-10", completed: false },
+    { id: 1, title: "Read Surah Al-Kahf", dueDate: "2025-08-15", description: "", priority: "Medium", completed: false },
+    { id: 2, title: "Morning and Evening Adhkar", dueDate: "2025-08-10", description: "", priority: "Low", completed: false },
+    { id: 3, title: "Pray Tahajjud", dueDate: "2025-08-10", description: "", priority: "High", completed: false },
   ]);
 
-  const [newTask, setNewTask] = useState("");
-  const [newDueDate, setNewDueDate] = useState("");
-
-  const addTask = () => {
-    if (newTask.trim() === "") return;
-    const task = {
+  // Add new task from TaskForm
+  const handleAddTask = (taskData) => {
+    const newTask = {
       id: Date.now(),
-      title: newTask,
-      dueDate: newDueDate || "No due date",
+      title: taskData.title,
+      description: taskData.description || "",
+      dueDate: taskData.dueDate || "No due date",
+      priority: taskData.priority || "Low",
       completed: false,
     };
-    setTasks([...tasks, task]);
-    setNewTask("");
-    setNewDueDate("");
+
+    setTasks([newTask, ...tasks]); // add to top
+    console.log("Updated Task List:", [newTask, ...tasks]);
   };
 
+  // Toggle completed status
   const toggleComplete = (id) => {
     const updatedTasks = tasks.map((task) =>
       task.id === id ? { ...task, completed: !task.completed } : task
@@ -52,36 +53,26 @@ export default function App() {
             <main className="tasks-page">
               <h1>Tasks Page</h1>
 
-              {/* New Task Inputs */}
-              <div className="new-task-input">
-                <input
-                  type="text"
-                  placeholder="Enter new task..."
-                  value={newTask}
-                  onChange={(e) => setNewTask(e.target.value)}
-                />
-                <input
-                  type="date"
-                  value={newDueDate}
-                  onChange={(e) => setNewDueDate(e.target.value)}
-                />
-                <button onClick={addTask}>Add Task</button>
-              </div>
+              {/* TaskForm */}
+              <TaskForm onSubmit={handleAddTask} />
 
               {/* Task List */}
               {tasks.map((task) => (
                 <TaskCard
                   key={task.id}
                   title={task.title}
+                  description={task.description}
                   dueDate={task.dueDate}
+                  priority={task.priority}
                   completed={task.completed}
                   onToggle={() => toggleComplete(task.id)}
                 />
               ))}
-              
+
+              {/* Motivational Message */}
               {tasks.length > 0 && tasks.every((task) => task.completed) && (
-  <p className="motivation-message">Keep up the good work!!</p>
-)}
+                <p className="motivation-message">Keep up the good work!!</p>
+              )}
             </main>
           }
         />
