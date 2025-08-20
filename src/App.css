@@ -38,3 +38,10 @@
 .new-task-input button:hover {
   background-color: #d4a373; 
 }
+.motivation-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #b8860b;
+  margin-top: 20px;
+  font-weight: bold;
+}

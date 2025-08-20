@@ -78,6 +78,10 @@ export default function App() {
                   onToggle={() => toggleComplete(task.id)}
                 />
               ))}
+              
+              {tasks.length > 0 && tasks.every((task) => task.completed) && (
+  <p className="motivation-message">Keep up the good work!!</p>
+)}
             </main>
           }
         />
