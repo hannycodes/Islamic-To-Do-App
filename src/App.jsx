@@ -27,6 +27,28 @@ export default function App() {
     console.log("Updated Task List:", [newTask, ...tasks]);
   };
 
+  // Toggle completed
+const handleToggleComplete = (taskId) => {
+  const updatedTasks = tasks.map((task) =>
+    task.id === taskId ? { ...task, completed: !task.completed } : task
+  );
+  setTasks(updatedTasks);
+};
+
+// Delete task
+const handleDeleteTask = (taskId) => {
+  const filteredTasks = tasks.filter((task) => task.id !== taskId);
+  setTasks(filteredTasks);
+};
+
+// Edit task
+const handleEditTask = (taskId, updatedTaskData) => {
+  const updatedTasks = tasks.map((task) =>
+    task.id === taskId ? { ...task, ...updatedTaskData } : task
+  );
+  setTasks(updatedTasks);
+};
+
   // Toggle completed status
   const toggleComplete = (id) => {
     const updatedTasks = tasks.map((task) =>
@@ -66,6 +88,8 @@ export default function App() {
                   priority={task.priority}
                   completed={task.completed}
                   onToggle={() => toggleComplete(task.id)}
+                  onDelete={() => handleDeleteTask(task.id)}
+                  onEdit={(updatedData) => handleEditTask(task.id, updatedData)}
                 />
               ))}
 

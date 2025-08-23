@@ -33,11 +33,52 @@
   flex: 1 1 70%; 
 }
 
-.task-card p.priority {
-  flex: 1 1 25%; 
-  text-align: right;
-  font-weight: bold;
-  color: #b8860b; 
+.task-card p.priority.high {
+  color: #e74c3c; 
+}
+
+.task-card p.priority.medium {
+  color: #f39c12; 
+}
+
+.task-card p.priority.low {
+  color: #27ae60;
+}
+
+.task-buttons button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.task-buttons button.complete-btn {
+  background-color: #b8860b;
+  color: white;
+}
+
+.task-buttons button.complete-btn:hover {
+  background-color: #a37508;
+}
+
+.task-buttons button.edit-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.task-buttons button.edit-btn:hover {
+  background-color: #2980b9;
+}
+
+.task-buttons button.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.task-buttons button.delete-btn:hover {
+  background-color: #c0392b;
 }
 
 .complete-btn {
