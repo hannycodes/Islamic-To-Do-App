@@ -6,11 +6,7 @@ import TaskForm from "./components/TaskForm";
 import "./App.css";
 
 export default function App() {
-  const [tasks, setTasks] = useState([
-    { id: 1, title: "Read Surah Al-Kahf", dueDate: "2025-08-15", description: "", priority: "Medium", completed: false },
-    { id: 2, title: "Morning and Evening Adhkar", dueDate: "2025-08-10", description: "", priority: "Low", completed: false },
-    { id: 3, title: "Pray Tahajjud", dueDate: "2025-08-10", description: "", priority: "High", completed: false },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   // Add new task from TaskForm
   const handleAddTask = (taskData) => {
@@ -94,6 +90,9 @@ const handleEditTask = (taskId, updatedTaskData) => {
               ))}
 
               {/* Motivational Message */}
+              {tasks.length === 0 &&(
+                <p className="empty-message">Start by adding your first task!!</p>
+              )}
               {tasks.length > 0 && tasks.every((task) => task.completed) && (
                 <p className="motivation-message">Keep up the good work!!</p>
               )}

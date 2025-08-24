@@ -1,0 +1,22 @@
+.task-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.task-form textarea {
+  resize: none;
+  height: 30px;
+}
