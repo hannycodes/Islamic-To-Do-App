@@ -29,7 +29,7 @@ const TaskCard = ({ title, description, dueDate, priority, completed, onToggle, 
       </div>
       <div className="task-buttons">
         <button className="complete-btn" onClick={onToggle}>{completed ? "Undo" : "Complete"}</button>
-        <button className="edit-btn" onClick={handleEditClick}>Edit</button>
+        <button className="edit-btn" onClick={onEdit}>Edit</button>
         <button className="delete-btn" onClick={onDelete}>Delete</button>
       </div>
     </div>
