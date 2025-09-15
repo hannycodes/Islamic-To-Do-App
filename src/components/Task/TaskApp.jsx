@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import TaskForm from "./TaskForm";
 import TaskCard from "./TaskCard";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import DailyQuotes from "../DailyQuotes.jsx";
 
 const TaskApp = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useLocalStorage("tasks",[]);
   const [taskBeingEdited, setTaskBeingEdited] = useState(null);
 
   // Add or update task
@@ -38,6 +40,8 @@ const TaskApp = () => {
   return (
     <div className="task-app">
       <h1>Task Manager</h1>
+
+      <DailyQuotes />
 
       <TaskForm
         onSubmit={handleAddTask}

@@ -6,6 +6,7 @@ const TaskForm = ({ onSubmit, initialTask }) => {
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [priority, setPriority] = useState("Low");
+   const [error, setError] = useState("");
 
   // Prefill fields if editing a task
   useEffect(() => {
@@ -19,7 +20,16 @@ const TaskForm = ({ onSubmit, initialTask }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    //validation
+    if(!title.trim()){
+      setError("Task title cannot be blank");
+      return;
+    }
+
     onSubmit({ title, description, dueDate, priority });
+
+    setError("");
 
     // Reset form only if adding a new task
     if (!initialTask) {
@@ -37,8 +47,10 @@ const TaskForm = ({ onSubmit, initialTask }) => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Task title"
-        required
       />
+
+      {error && <p className="error-message">{error}</p>}
+
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
